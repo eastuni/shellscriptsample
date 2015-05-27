@@ -1,0 +1,25 @@
+#!/bin/sh
+echo "ok"
+
+TMP=/tmp; export TMP
+TMPDIR=$TMP; export TMPDIR
+
+ORACLE_HOSTNAME=cbp.bankware; export ORACLE_HOSTNAME
+ORACLE_BASE=/oracle; export ORACLE_BASE
+ORACLE_HOME=$ORACLE_BASE/product/11g; export ORACLE_HOME
+ORACLE_HOME_LISTNER=$ORACLE_HOME/bin/lsnrctl; export ORACLE_HOME_LISTNER
+ORACLE_SID=ora11g; export ORACLE_SID
+ORACLE_TERM=xterm; export ORACLE_TERM
+PATH=/usr/sbin:$PATH:$ORACLE_HOME/bin; export PATH
+
+export LD_LIBRARY_PATH=$ORACLE_HOME/lib;
+export CLASSPATH=$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib;
+export NLS_LANG=AMERICAN_AMERICA.AL32UTF8;
+
+
+lang=$1
+target=$2
+
+sqlplus -s cbb/cbb@ora11g @"$lang.sql" "./$lang.csv" "$lang"
+cp $lang.csv $target
+
