@@ -10,6 +10,11 @@ is_file_exits(){
     [[ -f "$f" ]] && return 0 || return 1
 }
 
+is_dir_exits(){
+    local f="$1"
+    [[ -d "$f" ]] && return 0 || return 1
+}
+
 [[ $# -eq 0 ]] && usage
 
 TAR=$1
@@ -24,7 +29,7 @@ then
  echo "make tmp dir."
  mkdir tmp
  echo "Extract files"
- tar -C tmp -xvzf $TAR
+ tar -C tmp -xzf $TAR
 else
  echo "$TAR not found."
  exit 1
@@ -32,7 +37,7 @@ fi
 
 cd $CBP_HOME
 
-if ( is_file_exits "$TMP/app_home" )
+if ( is_dir_exits "$TMP/app_home" )
 then
  echo "del app_home"
  rm -rf app_home
@@ -43,7 +48,7 @@ else
  echo "app_home skip"
 fi
 
-if (is_file_exits "$TMP/webui" )
+if (is_dir_exits "$TMP/webui" )
 then
  echo "del webui."
  rm -rf webui
@@ -56,8 +61,10 @@ else
  echo "webui skip"
 fi
 
-cd $DEL_HOMEa
- echo "del tmp"
+cd $DEL_HOME
+echo "del tmp"ls
+
+
 rm -rf tmp
 
 echo "end."
