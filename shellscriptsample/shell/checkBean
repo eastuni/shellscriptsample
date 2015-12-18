@@ -6,7 +6,7 @@ find_sub(){
     do
         local arr2=(`echo $line2|cut -d "/" --output-delimiter=" " -f 1-`)
     #   echo "${arr2[0]} =~ $1"
-        if [[ "${arr2[0]}" =~ "$key" ]];then
+        if [ "${arr2[0]}" == "$key" -o "${arr2[0]}" == "${key}Impl" ];then
             SUB=(${arr2[0]} ${arr2[1]})
             #echo "sub: ${arr2[0]} ${arr2[1]}"
             return 0
@@ -16,6 +16,9 @@ find_sub(){
 }
 
 echo '-------------------------------'
+echo 'BeanCreation error list.'
+echo '-------------------------------'
+
 if [[ $# -eq 1 ]];then
     TARGETLOG=$HOME/bxm/logs/online/$1
 else
@@ -23,7 +26,7 @@ else
 fi
 LIST=`grep "BeanCreation" $TARGETLOG|grep " is failed.this bean will be removed" |awk '{gsub(/[\[\]]/,"");split($(NF-32),a,"."); split($(NF-19),b,".");print a[length(a)]"/"b[length(b)]}'|sort -u`
 
-#echo "$LIST"
+echo "$LIST"
 
 for line1 in $LIST
 do
@@ -50,3 +53,10 @@ do
     echo "$RET"
 done
 echo '-------------------------------'
+echo '-------------------------------------------------------'
+echo 'Already resistered Bean list.'
+echo 'find the class and remove it'
+echo 'ex) cd ~/bxm/app_home;find . -name {className}.*'
+echo '-------------------------------------------------------'
+
+grep "is already registered." $TARGETLOG|awk '{gsub(/[\[\]]/,"");print "==\n"$(NF-11)"\n"$(NF-3)"\n=="}'
