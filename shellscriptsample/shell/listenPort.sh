@@ -8,7 +8,7 @@ for i in "${!PIDLIST[@]}"
 do 
   echo "=======    ${PIDLIST[$i]} ,  ${PORTLIST[$i]}  =============="
   echo "ps -ef|grep ${PIDLIST[$i]}";
-  echo `ps -ef|grep ${PIDLIST[$i]}`;
+  #echo `ps -ef|grep ${PIDLIST[$i]}`;
   echo
 done
 

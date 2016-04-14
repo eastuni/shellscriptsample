@@ -81,3 +81,25 @@ done
 echo "" >> $prjtxt
 echo $baseset >> $prjtxt
 echo $svcset >> $prjtxt
+
+echo "* Ant" > $prjtxt
+echo "" > $svnprj
+for base in ${basearray[@]}
+do
+	echo '<fileset dir="${workspace}/'$base'/src">' >> $prjtxt
+	echo "    <patternset refid=\"sources.java\"/>" >> $prjtxt
+	echo "</fileset>" >> $prjtxt
+	echo '<fileset dir="${workspace}/'$base'/src-gen">' >> $prjtxt
+	echo "    <patternset refid=\"sources.java\"/>" >> $prjtxt
+	echo "</fileset>" >> $prjtxt
+done
+cnt=1
+for svc in ${svcarray[@]}
+do
+	echo '<fileset dir="${workspace}/'$svc'/src">' >> $prjtxt
+	echo "    <patternset refid=\"sources.java\"/>" >> $prjtxt
+	echo "</fileset>" >> $prjtxt
+	echo '<fileset dir="${workspace}/'$svc'/src-gen">' >> $prjtxt
+	echo "    <patternset refid=\"sources.java\"/>" >> $prjtxt
+	echo "</fileset>" >> $prjtxt
+done

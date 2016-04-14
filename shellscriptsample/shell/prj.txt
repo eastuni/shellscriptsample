@@ -1,0 +1,217 @@
+* Ant
+<fileset dir="${workspace}/AC/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/AC/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/AR/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/AR/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/AS/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/AS/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/AT/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/AT/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/CI/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/CI/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/CM/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/CM/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/DC/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/DC/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/PD/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/PD/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/PY/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/PY/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/SM/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/SM/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/SR/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/SR/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/ST/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/ST/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/SV/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/SV/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/XP/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/XP/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/ACSvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/ACSvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/BFSvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/BFSvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/CLSvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/CLSvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/CMSvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/CMSvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/CPSvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/CPSvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/CRSvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/CRSvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/CUSvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/CUSvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/DPSvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/DPSvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/DTSvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/DTSvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/FXSvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/FXSvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/IASvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/IASvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/LNSvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/LNSvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/MTSvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/MTSvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/NPSvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/NPSvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/PDSvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/PDSvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/PPSvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/PPSvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/PYSvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/PYSvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/SCSvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/SCSvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/SFSvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/SFSvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/UESvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/UESvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/UPSvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/UPSvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/XPSvc/src">
+    <patternset refid="sources.java"/>
+</fileset>
+<fileset dir="${workspace}/XPSvc/src-gen">
+    <patternset refid="sources.java"/>
+</fileset>
