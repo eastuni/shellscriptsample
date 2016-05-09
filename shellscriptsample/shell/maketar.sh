@@ -13,6 +13,12 @@ echo "${VERSION}"
 
 TARNAME=cbbcustom${VERSION}.tar
 
+cd cbb-custom
+
+svn up --username alpha --password bankware
+
+cd ..
+
 tar -cvf ${TARNAME} svncommit.log
 
 while IFS='' read -r line || [[ -n "$line" ]]; do

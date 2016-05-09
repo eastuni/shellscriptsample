@@ -4,7 +4,7 @@
 #
 # The post-commit hook is invoked after a commit.  Subversion runs
 # this hook by invoking a program (script, executable, binary, etc.)
-# named 'post-commit' (for which this file is a template) with the
+# named 'post-commit' (for which this file is a template) with the 
 # following ordered arguments:
 #
 #   [1] REPOS-PATH   (the path to this repository)
@@ -29,14 +29,14 @@
 # On a Windows system, you should name the hook program
 # 'post-commit.bat' or 'post-commit.exe',
 # but the basic idea is the same.
-#
+# 
 # The hook program typically does not inherit the environment of
 # its parent process.  For example, a common problem is for the
 # PATH environment variable to not be set to its usual value, so
 # that subprograms fail to launch unless invoked via absolute path.
 # If you're having unexpected problems with a hook program, the
 # culprit may be unusual (or missing) environment variables.
-#
+# 
 # Here is an example hook script, for a Unix /bin/sh interpreter.
 # For more examples and pre-written hooks, see those in
 # the Subversion repository at
@@ -55,8 +55,8 @@ projectBase=jenkins             # First part of the Jenkins project name
 hudsonUrl="http://cbp.bankware:8080"  #URL to trigger Jenkins
 triggerString="uideploy"           #String to trigger builds
 
-hudsonJob="Dev_UI_Deploy"
 uiflag="false"
+cauiflag="false"
 targetlist=""
 
 echo `date "+%Y%m%d_%H%M"` >>$logName
@@ -65,60 +65,68 @@ echo "$REPOS, $REV" >> $logName
 #svnlook dirs-changed $REPOS > $logName
 
 regex="interfaces|enums|constant|daobatch"
-baselist="AC/CU/AT/CM/AR/PD/SM/ST/SV/WF/DC"
-svclist="ACSvc/ASSvc/CPSvc/CUSvc/DPSvc/DTSvc/LNSvc/MTSvc/PDSvc/PYSvc/SFSvc/UPSvc"
+baselist="AC/AR/AS/AT/CI/CM/DC/PD/PY/SM/SR/ST/SV/XP/CA"
+svclist="ACSvc/BFSvc/CLSvc/CMSvc/CPSvc/CRSvc/CUSvc/DPSvc/DTSvc/FXSvc/IASvc/LNSvc/MTSvc/NPSvc/PDSvc/PPSvc/PYSvc/SCSvc/SFSvc/UESvc/UPSvc/XPSvc/CASvc"
 for line1 in  `svnlook dirs-changed $REPOS -r $REV`
 do
     echo $line1
-        arr=(`echo $line1 | cut -d "/"  --output-delimiter=" " -f 1-`)
-        echo "${arr[0]}, ${arr[1]}" >> $logName
-        if [ "${arr[0]}" == "trunk" ]; then
-                if [ "${arr[1]}" == "UI" ]
-                then
-                        echo "UI" >> $logName
-                        uiflag="true"
-                elif [ "${arr[1]}" == "CORE-intrfc" ]; then
-                        if [ "${arr[2]}" == "dist" ]; then
-                                echo "dist skip" >> $logName
-                        elif [[ ! $targetlist =~ ${arr[1]} ]]; then
-                                targetlist="$targetlist ${arr[1]}"
-                        fi
-                elif [[ $baselist =~ ${arr[1]} ]]; then
-                        if [[ ! $targetlist =~ ${arr[1]} ]]; then
-                                echo "ok"
-
-                                if [[ "${line1}" =~ $regex ]];then
-                                        echo "${arr[7]}"
-                                        targetlist="$targetlist ${arr[1]}"
-                                else
-                                        echo "NO"
-                                fi
-                        fi
-                elif [[ $svclist =~ ${arr[1]} ]]; then
-                        if [[ ! $targetlist =~ ${arr[1]} ]]; then
-                                echo "ok"
-
-                                if [[ "${line1}" =~ "dto" ]];then
-                                        echo "${arr[7]}"
-                                        targetlist="$targetlist ${arr[1]}"
-                                else
-                                        echo "NO"
-                                fi
-                        fi
-                fi
-        fi
+	arr=(`echo $line1 | cut -d "/"  --output-delimiter=" " -f 1-`)
+	echo "${arr[0]}, ${arr[1]}" >> $logName
+	if [ "${arr[0]}" == "trunk" ]; then 
+		if [ "${arr[1]}" == "UI" ]; then
+			echo "UI" >> $logName
+			uiflag="true"
+		elif [ "${arr[1]}" == "CAUI" ]; then
+			echo "CAUI" >> $logName
+			cauiflag="true"
+		elif [ "${arr[1]}" == "CORE-intrfc" ]; then
+			if [ "${arr[2]}" == "dist" ]; then
+				echo "dist skip" >> $logName
+			elif [[ ! $targetlist =~ ${arr[1]} ]]; then
+				targetlist="$targetlist ${arr[1]}"
+			fi
+		elif [[ $baselist =~ ${arr[1]} ]]; then
+			if [[ ! $targetlist =~ ${arr[1]} ]]; then
+				echo "ok"
+			
+				if [[ "${line1}" =~ $regex ]];then
+					echo "${arr[7]}"
+					targetlist="$targetlist ${arr[1]}"
+				else
+					echo "base no target" >> $logName
+				fi
+			fi
+		elif [[ $svclist =~ ${arr[1]} ]]; then
+			if [[ ! $targetlist =~ ${arr[1]} ]]; then
+				echo "svc ok" >> $logName
+			
+				if [[ "${line1}" =~ "dto"|"enums" ]];then
+					echo "${arr[7]}" >> $logName
+					targetlist="$targetlist ${arr[1]}"
+				else
+					echo "svc no target" >> $logName
+				fi
+			fi
+		fi
+	fi
 done
 
 if [ "$uiflag" == "true" ]
 then
-        echo "build ui deploy job" >> $logName
-        $wgetCmd -q $hudsonUrl/job/$hudsonJob/build?token=$triggerString -O /dev/null
+	echo "build ui deploy job" >> $logName
+	$wgetCmd -q $hudsonUrl/job/Dev_UI_Deploy/build?token=$triggerString -O /dev/null
+fi
+
+if [ "$cauiflag" == "true" ]
+then
+	echo "build caui deploy job" >> $logName
+	$wgetCmd -q $hudsonUrl/job/Dev_CAUI_Deploy/build?token=$triggerString -O /dev/null
 fi
 
 for target in $targetlist
 do
-         echo "build ${target} jar  job" >> $logName
-        $wgetCmd -q "$hudsonUrl/job/DEV_Build_${target}_Jar/build?token=buildjar" -O /dev/null
+	 echo "build ${target} jar  job" >> $logName
+	$wgetCmd -q "$hudsonUrl/job/DEV_Build_${target}_Jar/build?token=buildjar" -O /dev/null 
 done
 
 exit 0
